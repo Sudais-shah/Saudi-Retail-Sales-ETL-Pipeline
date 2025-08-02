@@ -1,24 +1,21 @@
+# The below data is for Notebooks testing purposes
+# data:
+#   raw_dir: ../data/raw/saudi_store_sales_dataset.csv
+#   processed_dir: ../data/processed   
+
+# The below data is for main.py so that it can be run from the command line
 data:
-  raw_dir: ../data/raw/saudi_store_sales_dataset.csv
+  raw_dir: data/raw/saudi_store_sales_dataset.csv
   processed_dir: data/processed
+
 
 spark:
   master: "local[*]"
-  app_name: "RetailForecast"
+  app_name: "Retail ETL Pipeline"
   configs:
     spark.sql.shuffle.partitions: 200
 
-mlflow:
-  tracking_uri: "file:./mlruns"
-  experiment_name: "retail_sales_forecast"
 
-model:
-  random_seed: 42
-  horizon: "weekly"
-  train_start: "2020-01-01"
-  train_end: "2023-12-31"
-  test_start: "2024-01-01"
-  test_end: "2024-03-31"
 
 general:
   log_level: "INFO"

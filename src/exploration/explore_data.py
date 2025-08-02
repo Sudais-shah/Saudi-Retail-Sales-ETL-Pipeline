@@ -6,33 +6,19 @@ class DataExplorer:
     def __init__(self, dataframe):
         """
         Initializes the DataExplorer with a DataFrame Pandas or Spark.
-        
-        Args:
-        - dataframe: Pandas or Spark DataFrame.
         """
         self.df = dataframe
         self.is_spark = isinstance(dataframe, SparkDataFrame)
 
 # =====================================================================================
-
-    def explore_data(self, schema=False, overview=False, summary=False, 
+    def explore_data_with_spark(self, schema=False, overview=False, summary=False, 
                      nulls=False, duplicates=False, value_counts=False, all=False):
         """
         Displays information about the DataFrame.
-        
-        Args:
-        - schema: Show column types.
-        - overview: Show rows, columns, and names.
-        - summary: Show basic stats.
-        - nulls: Count missing values.
-        - duplicates: Count duplicate rows.
-        - value_counts: Display unique values for each column.
-        - all: Show all the above.
         """
-        
         if all:
             schema = overview = summary = nulls = duplicates = value_counts = True
-
+        
         if self.is_spark:
             if schema:
                 self.df.printSchema()
@@ -60,20 +46,10 @@ class DataExplorer:
                                  nulls=False, duplicates=False, value_counts=False, all=False):
         """
         Displays information for Pandas DataFrame.
-        
-        Args:
-        - schema: Show column types.
-        - overview: Show rows, columns, and names.
-        - summary: Show basic stats.
-        - nulls: Count missing values.
-        - duplicates: Count duplicate rows.
-        - value_counts: Display unique values for each column.
-        - all: Show all the above.
         """
         
         if all:
             schema = overview = summary = nulls = duplicates = value_counts = True
-        
         if schema:
             print(self.df.dtypes)
         if overview:
